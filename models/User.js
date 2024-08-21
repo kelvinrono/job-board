@@ -24,6 +24,19 @@ const User = sequelize.define('User', {
     type: DataTypes.ENUM('job_seeker', 'employer', 'admin'),
     allowNull: false,
   },
+  profilePicture: {
+    type: DataTypes.STRING,
+    allowNull: true, 
+  },
+  bio: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  },
+  deleted: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  }
+
 });
 
 module.exports = User;
