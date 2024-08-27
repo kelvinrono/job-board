@@ -3,6 +3,7 @@ const sequelize = require('./config/database');
 const adminRoutes = require('./routes/admin');
 const profileRoutes = require('./routes/profile');
 const skillsRoutes = require('./routes/skills');
+const jobRoutes = require('./routes/jobs');
 
 require('dotenv').config();
 
@@ -10,7 +11,7 @@ const express = require('express');
 
 const app = express();
 
-sequelize.sync({})
+sequelize.sync({alter:true})
   .then(() => console.log('Database & tables created!'));
 
 
@@ -24,6 +25,8 @@ app.use('/api/admin', adminRoutes);
 app.use("/api/users", profileRoutes)
 
 app.use("/api", skillsRoutes)
+
+app.use("/api", jobRoutes)
 
 
 const PORT = process.env.PORT || 5000;

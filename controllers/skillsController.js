@@ -27,16 +27,19 @@ exports.getUserSkills = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    // Find user and get their associated skills
     const user = await User.findByPk(userId, {
-      include: Skills, // Sequelize association to include skills
-    });
+      include: [{
+        model: Skills,
+        attributes: ['id', 'name', 'deleted'], 
+        through: { attributes: [] } 
+      }]   
+     });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.status(200).json({ skills: user.Skills });
+    res.status(200).json({ skills: user.skills });
   } catch (error) {
     res.status(500).json({ message: "Error retrieving user skills" });
     console.error("Error retrieving user skills", error);

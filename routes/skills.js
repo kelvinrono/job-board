@@ -14,4 +14,7 @@ router.get("/skills", authorize(['job_seeker', 'employer', 'admin']), skillContr
 
 router.delete("/skills/:id", authorize(['admin']), skillController.deleteSkill);
 
+
+
+
 module.exports = router;

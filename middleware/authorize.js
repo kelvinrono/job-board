@@ -12,7 +12,6 @@ const authorize = (roles) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       const user = await User.findByPk(decoded.id);
-      console.log("user available",user)
 
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
@@ -32,3 +31,6 @@ const authorize = (roles) => {
 };
 
 module.exports = authorize;
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImVtcGxveWVyIiwiaWF0IjoxNzI0Nzg2NzQyLCJleHAiOjE3MjQ4NzMxNDJ9.mtzOPQCicjd8-cZiAsdK3NDklaT5f-EUcjFzL9cpIKI
+
