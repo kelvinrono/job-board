@@ -4,6 +4,7 @@ const adminRoutes = require('./routes/admin');
 const profileRoutes = require('./routes/profile');
 const skillsRoutes = require('./routes/skills');
 const jobRoutes = require('./routes/jobs');
+const jobApplication = require('./routes/jobApplication');
 
 require('dotenv').config();
 
@@ -27,6 +28,9 @@ app.use("/api/users", profileRoutes)
 app.use("/api", skillsRoutes)
 
 app.use("/api", jobRoutes)
+
+app.use("/api", jobApplication)
+
 
 
 const PORT = process.env.PORT || 5000;

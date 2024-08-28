@@ -10,7 +10,7 @@ exports.createJob = async (req, res) => {
       return res.status(400).json({ message: 'Title, description, and location are required' });
     }
 
-    const job = await Job.create({
+  await Job.create({
       title,
       description,
       location,
